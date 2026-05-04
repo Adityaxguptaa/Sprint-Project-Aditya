@@ -28,6 +28,18 @@ public class RepositoryConfig implements RepositoryRestConfigurer {
     @Autowired
     private Validator validator;
 
+	@Override
+	public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
+		config.exposeIdsFor(Office.class, Employee.class, Customer.class, Order.class, ProductLine.class,
+				Product.class);
+	}
+
+	@Override
+	public void configureValidatingRepositoryEventListener(ValidatingRepositoryEventListener validatingListener) {
+		validatingListener.addValidator("beforeCreate", validator);
+		validatingListener.addValidator("beforeSave", validator);
+	}
+}
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
         config.exposeIdsFor(
@@ -76,3 +88,4 @@ public class RepositoryConfig implements RepositoryRestConfigurer {
         validatingListener.addValidator("beforeSave", validator);
     }
 }
+
