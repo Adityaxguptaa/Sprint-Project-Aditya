@@ -25,10 +25,9 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 @Configuration
 public class RepositoryConfig implements RepositoryRestConfigurer {
 
-	@Autowired
-	private Validator validator;
+    @Autowired
+    private Validator validator;
 
-<<<<<<< Updated upstream
 	@Override
 	public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
 		config.exposeIdsFor(Office.class, Employee.class, Customer.class, Order.class, ProductLine.class,
@@ -41,7 +40,6 @@ public class RepositoryConfig implements RepositoryRestConfigurer {
 		validatingListener.addValidator("beforeSave", validator);
 	}
 }
-=======
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
         config.exposeIdsFor(
@@ -90,4 +88,4 @@ public class RepositoryConfig implements RepositoryRestConfigurer {
         validatingListener.addValidator("beforeSave", validator);
     }
 }
->>>>>>> Stashed changes
+
